@@ -3,7 +3,9 @@ package com.sumit.srv.binarysearch;
 public class SearchElementInRotatedSortedArray {
     public static void main(String[] args) {
         int[] arr = {11, 12, 15, 18, 19, 20, 21, 2, 5, 6, 8};
-        int key = 11;
+        // int[] arr = {1, 0, 1, 1, 1, 1};
+        // for duplicate element it is not possible to search in O(logn)
+        int key = 0;
 
         int pivot = findPivotIndex(arr, 0, arr.length - 1);
         System.out.println("pivot ----> " + pivot);
