@@ -3,7 +3,7 @@ package com.sumit.srv.binarysearch;
 import java.util.Arrays;
 
 public class AggressiveCows {
-    public static String path = "";
+    public static StringBuilder path = new StringBuilder();
 
     public static void main(String[] args) {
         int[] stalls = {4, 2, 1, 3, 6};
@@ -14,7 +14,7 @@ public class AggressiveCows {
         int max = stalls[stalls.length - 1];
         int distance = findAllocation(stalls, k, min, max);
         System.out.println(distance);
-        path = buildPath(stalls, distance);
+        buildPath(stalls, distance);
         System.out.println(path);
     }
 
@@ -33,37 +33,31 @@ public class AggressiveCows {
         return distance - stalls[0];
     }
 
-    private static int getNumberOfCows(int[] stalls, int mid, int k) {
+    private static int getNumberOfCows(int[] arr, int mid, int k) {
+        int p = 0;
         int count = 1;
-        int position = stalls[0];
-        while ((position = findCeil(stalls, position + mid)) != -1 && count < k) {
-            count++;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] - arr[p] >= mid) {
+                count++;
+                p = i;
+            }
+            if (k == count) {
+                break;
+            }
         }
         return count;
     }
 
-    private static String buildPath(int[] arr, int mid) {
+    private static void buildPath(int[] arr, int mid) {
+        int p = 0;
         int position = arr[0];
-        path += position + "-";
-        while ((position = findCeil(arr, position + mid)) != -1) {
-            path += position + "-";
-        }
-        return path;
-    }
-
-    private static int findCeil(int[] arr, int key) {
-        int start = 0;
-        int end = arr.length - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (arr[mid] == key) {
-                return arr[mid];
-            } else if (arr[mid] > key) {
-                end = mid - 1;
-            } else {
-                start = mid + 1;
+        path.append(position).append("-");
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] - arr[p] >= mid) {
+                path.append(arr[i]).append("-");
+                p = i;
             }
         }
-        return start >= arr.length - 1 ? -1 : arr[start];
     }
+
 }
