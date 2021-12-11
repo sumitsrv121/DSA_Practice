@@ -6,8 +6,8 @@ public class AggressiveCows {
     public static String path = "";
 
     public static void main(String[] args) {
-        int[] stalls = {0, 4, 3, 7, 10, 9};
-        int k = 4;
+        int[] stalls = {1, 2, 4, 5};
+        int k = 3;
         Arrays.sort(stalls);
         System.out.println(Arrays.toString(stalls));
         int min = stalls[0];
@@ -22,10 +22,8 @@ public class AggressiveCows {
         while (start <= end) {
             int mid = start + (end - start) / 2;
             int numberOfCows = getNumberOfCows(stalls, mid);
-            if (numberOfCows == k) {
+            if (numberOfCows >= k) {
                 distance = mid;
-                start = mid + 1;
-            } else if (numberOfCows > k) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
