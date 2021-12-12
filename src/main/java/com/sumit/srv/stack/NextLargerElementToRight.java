@@ -3,7 +3,7 @@ package com.sumit.srv.stack;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class NextLargerElement {
+public class NextLargerElementToRight {
     public static void main(String[] args) {
         int[] arr = {1, 3, 0, 0, 2, 2, 4};
         int[] ans = new int[arr.length];
