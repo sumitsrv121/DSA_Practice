@@ -5,14 +5,14 @@ import java.util.Arrays;
 public class CoinChangeMaximumNumberOfWaysWithNoTwosTogether {
 
     public static void main(String[] args) {
-        int sum = 100;
+        int sum = 8;
         long[] dp = new long[sum + 1];
         Arrays.fill(dp, -1);
         dp[0] = 1;
         for (int i = 1; i < dp.length; i++) {
             if (i == 1) {
                 dp[i] = dp[i - 1];
-            } else if (i <= 3) {
+            } else if (i == 2) {
                 dp[i] = dp[i - 1] + dp[i - 2];
             } else {
                 dp[i] = dp[i - 1] + dp[i - 3];
