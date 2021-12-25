@@ -1,4 +1,4 @@
-package com.sumit.srv.dynamicProgramming;
+package com.sumit.srv.dynamicProgramming.knapsack;
 
 import java.util.Arrays;
 

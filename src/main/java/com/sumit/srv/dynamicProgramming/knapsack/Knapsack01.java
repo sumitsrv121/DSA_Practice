@@ -1,4 +1,4 @@
-package com.sumit.srv.dynamicProgramming;
+package com.sumit.srv.dynamicProgramming.knapsack;
 
 public class Knapsack01 {
     public static void main(String[] args) {
