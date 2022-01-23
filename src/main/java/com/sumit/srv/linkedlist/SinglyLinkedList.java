@@ -2,17 +2,16 @@ package com.sumit.srv.linkedlist;
 
 public class SinglyLinkedList {
     private static Node HEAD = null;
+    private static Node END = null;
 
     public static void addNodeToLinkedList(Node newNode) {
         if (HEAD == null) {
             HEAD = newNode;
+            END = newNode;
             return;
         }
-        Node ptr = HEAD;
-        while (ptr.next != null) {
-            ptr = ptr.next;
-        }
-        ptr.next = newNode;
+        END.next = newNode;
+        END = newNode;
     }
 
     public static void printLinkedList() {
