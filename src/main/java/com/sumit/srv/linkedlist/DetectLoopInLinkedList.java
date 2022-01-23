@@ -5,11 +5,11 @@ public class DetectLoopInLinkedList {
 
     public static void main(String[] args) {
         addNodeToLinkedList(new Node(1));
-        Node node = new Node(2);
-        addNodeToLinkedList(node);
+        addNodeToLinkedList(new Node(2));
         addNodeToLinkedList(new Node(3));
         addNodeToLinkedList(new Node(4));
-        addNodeToLinkedList(new Node(5));
+        Node node = new Node(5);
+        addNodeToLinkedList(node);
         Node node1 = new Node(6);
         addNodeToLinkedList(node1);
         node1.next = node;
@@ -31,9 +31,13 @@ public class DetectLoopInLinkedList {
                 break;
             }
         }
-        if (fast != null && slow == fast) {
-            fast.next = null;
+        slow = HEAD;
+        while (fast != null && slow.next != fast.next) {
+            fast = fast.next;
+            slow = slow.next;
         }
+        assert fast != null;
+        fast.next = null;
         displayLinkedList();
     }
 
