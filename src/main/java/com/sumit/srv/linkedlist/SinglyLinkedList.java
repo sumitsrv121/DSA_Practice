@@ -22,6 +22,34 @@ public class SinglyLinkedList {
         }
     }
 
+    public static Node findMiddleElement() {
+        Node slow = HEAD;
+        Node fast = HEAD;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+
+    public static void removeMiddleElementFromLinkedList() {
+        Node slow = HEAD;
+        Node fast = HEAD;
+        Node prev = null;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            prev = slow;
+            slow = slow.next;
+        }
+        if (prev != null) {
+            prev.next = prev.next.next;
+            slow.next = null;
+        }
+    }
+
     public static void main(String[] args) {
         addNodeToLinkedList(new Node(1));
         addNodeToLinkedList(new Node(2));
@@ -32,5 +60,9 @@ public class SinglyLinkedList {
 
         printLinkedList();
         System.out.println();
+        Node middleElement = findMiddleElement();
+        System.out.println(middleElement.data);
+        removeMiddleElementFromLinkedList();
+        printLinkedList();
     }
 }
